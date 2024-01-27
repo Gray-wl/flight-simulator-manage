@@ -1,6 +1,6 @@
-import { API_PREFIX } from '@/constants';
+import { ACCESS_TOKEN, API_PREFIX } from '@/constants';
 import { ResponseStatus } from '@/constants/enum';
-import { request, RequestConfig } from '@umijs/max';
+import { RequestConfig, history, request } from '@umijs/max';
 import { message } from 'antd';
 
 const requestConfig: RequestConfig = {
@@ -10,13 +10,15 @@ const requestConfig: RequestConfig = {
   //     errorHandler: (err) => {},
   //   },
   // 请求拦截器
-  //   requestInterceptors: [
-  //     (config) => {
-  //       // 拦截请求配置，进行个性化处理。
-  //       console.log(config, 333);
-  //       return { ...config };
-  //     },
-  //   ],
+  requestInterceptors: [
+    (config: any) => {
+      // 拦截请求配置，进行个性化处理。
+      config.headers.Authorization = `Bearer ${localStorage.getItem(
+        ACCESS_TOKEN,
+      )}`;
+      return { ...config };
+    },
+  ],
   // 响应拦截器
   responseInterceptors: [
     (response: any) => {
@@ -28,9 +30,16 @@ const requestConfig: RequestConfig = {
     },
     [
       (response) => response,
-      (error) => {
-        if (error?.message) {
-          message.error(error.message);
+      (error: any) => {
+        const msg =
+          error?.response?.data?.message ??
+          error?.response?.message ??
+          error?.message;
+        if (msg) {
+          message.error(msg);
+        }
+        if (error?.response?.status === ResponseStatus.Unauthorized) {
+          history.replace('/login');
         }
         return Promise.reject(error);
       },
@@ -60,7 +69,7 @@ class MyRequest {
   }
 
   // 封装 GET 请求
-  async get<T>(url: string, params: T, ...args: any[]) {
+  async get<T>(url: string, params?: T, ...args: any[]) {
     return await this._fetch(url, 'GET', { params, ...args });
   }
 
@@ -77,7 +86,7 @@ class MyRequest {
   }
 
   // 封装 POST 请求
-  async post<T>(url: string, data: T) {
+  async post<T>(url: string, data?: T) {
     return await this._fetch(url, 'POST', {
       data,
     });

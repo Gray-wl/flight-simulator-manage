@@ -1,12 +1,12 @@
-import { defineConfig } from "@umijs/max";
-import proxy from "./proxy";
-import routes from "./routes";
+import { defineConfig } from '@umijs/max';
+import proxy from './proxy';
+import routes from './routes';
 
 export default defineConfig({
   antd: {
     configProvider: {
-      prefixCls: "antflight",
-      iconPrefixCls: "antflighticon",
+      prefixCls: 'antflight',
+      iconPrefixCls: 'antflighticon',
     },
   },
   access: {},
@@ -15,9 +15,10 @@ export default defineConfig({
   proxy,
   request: {},
   layout: {
-    title: "飞升模拟器后台",
+    title: '飞升模拟器后台',
+    locale: false,
   },
   routes,
-  npmClient: "pnpm",
+  npmClient: 'pnpm',
   tailwindcss: {},
 });

@@ -15,6 +15,11 @@ const routes = [
     name: '字典管理',
     component: './Dictionary',
   },
+  {
+    path: '/login',
+    component: './Login',
+    layout: false,
+  },
 ];
 
 export default routes;

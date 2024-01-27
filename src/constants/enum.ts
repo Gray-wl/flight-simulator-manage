@@ -1,6 +1,7 @@
 export enum ResponseStatus {
   Success = 'success',
   Error = 'error',
+  Unauthorized = 401
 }
 
 export enum StatusType {

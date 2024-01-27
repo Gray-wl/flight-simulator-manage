@@ -1,5 +1,6 @@
 import { StatusType } from '@/constants/enum';
 import { queryDictionaryEnum } from '@/services/dictionary';
+import routes from '../../config/routes';
 
 /**
  * 查询字典枚举
@@ -25,4 +26,13 @@ export const downLoad = (downLoadUrl: string, fileName?: string) => {
   }
   aEle.href = downLoadUrl;
   aEle.click();
+};
+
+/**
+ * @description 是否是layout页面
+ */
+export const layoutPage = () => {
+  const currentRoute = window.location.pathname;
+  const routeConfig = routes.find((route) => route.path === currentRoute);
+  return routeConfig && routeConfig.layout !== false;
 };
