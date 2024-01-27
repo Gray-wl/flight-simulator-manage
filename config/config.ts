@@ -19,6 +19,7 @@ export default defineConfig({
     locale: false,
   },
   routes,
+  publicPath: '/manage/',
   npmClient: 'pnpm',
   tailwindcss: {},
 });
