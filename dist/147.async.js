@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkflight_simulator_manage=self.webpackChunkflight_simulator_manage||[]).push([[147],{50147:function(E,n,t){t.r(n),t.d(n,{default:function(){return l}});var e=t(68136),u=t(99358),a=t(33130);function l(){var s=(0,u.useOutletContext)();return(0,a.jsx)(u.Outlet,{context:s})}}}]);
