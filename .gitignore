@@ -8,7 +8,7 @@
 /.umi
 /.umi-production
 /.umi-test
-/dist
+# /dist
 /.mfsu
 .swc
 .history
