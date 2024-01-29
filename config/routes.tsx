@@ -3,21 +3,21 @@ const routes = [
   {
     path: '/scenario',
     name: '剧情管理',
-    component: './Scenario',
+    component: '@/pages/Scenario',
   },
   {
     path: '/talent',
     name: '天赋管理',
-    component: './Talent',
+    component: '@/pages/Talent',
   },
   {
     path: '/dictionary',
     name: '字典管理',
-    component: './Dictionary',
+    component: '@/pages/Dictionary',
   },
   {
     path: '/login',
-    component: './Login',
+    component: '@/pages/Login',
     layout: false,
   },
 ];
