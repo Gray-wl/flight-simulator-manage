@@ -16,7 +16,6 @@ interface InitialState {
 // 获取全局初始化数据
 export async function getInitialState(): Promise<InitialState> {
   try {
-    console.log(12121)
     if (layoutPage()) {
       const goLoginout = async () => {
         await loginout();
