@@ -4,6 +4,6 @@ WORKDIR /usr/src/app
 ADD . /usr/src/app
 
 # 安装pnpm
-# RUN npm install -g pnpm
-# RUN pnpm install
-CMD ["npm", "run", "build"]
+RUN npm install -g pnpm
+RUN pnpm install
+CMD ["pnpm", "run", "build"]
